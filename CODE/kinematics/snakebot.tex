@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\title{Snakebonnnnt}
+\author{Munyakabera Jean Claude}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Definitions}
+
+\begin{align*}
+    S &= \text{Number of Segments} \\
+    \theta_n &= \text{Relative angle of segment } n \\
+    \Theta_n &= \text{Absolute angle of segment } n \\
+    C_n &= \text{Center (base) point of segment } n \\
+    L_n &= \text{Left point of segment } n \\
+    R_n &= \text{Right point of segment } n \\
+    W &= \text{Width of segment from center to edge} \\
+    H &= \text{Height of segment from center to top} \\
+    X &= \text{Cord displacement (per segment)}
+\end{align*}
+
+\begin{align}
+    Rot(\begin{bmatrix} a \\ b \end{bmatrix}, \theta) &= \begin{bmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{bmatrix} \begin{bmatrix} a \\ b \end{bmatrix} \\
+    &= \begin{bmatrix} a\cdot cos\theta - b\cdot sin\theta \\ a\cdot sin\theta + b\cdot cos\theta \end{bmatrix}
+\end{align}
+
+\section{Models}
+
+\begin{align}
+    \Theta_n &= \sum_{i=0}^S \theta_i \\
+    C_{n+1} &= C_n + Rot(\begin{bmatrix} 0 \\ H \end{bmatrix}, \Theta_n) \\
+    L_{n} &= C_n - Rot(\begin{bmatrix} W \\ 0 \end{bmatrix}, \Theta_n) \\
+    R_{n} &= C_n + Rot(\begin{bmatrix} W \\ 0 \end{bmatrix}, \Theta_n)
+\end{align}
+
+\section{Initial Conditions}
+
+\begin{align}
+    C_0 &= \begin{bmatrix} 0 \\ 0 \end{bmatrix} \\
+    \theta_0 &= 0
+\end{align}
+
+\begin{align}
+    L_0 &= C_0 - Rot(\begin{bmatrix} W \\ 0 \end{bmatrix}, \Theta_0) = \begin{bmatrix} -W \\ 0 \end{bmatrix} \\
+    R_0 &= C_0 + Rot(\begin{bmatrix} W \\ 0 \end{bmatrix}, \Theta_0) = \begin{bmatrix} W \\ 0 \end{bmatrix} \\
+    C_1 &= C_0 + Rot(\begin{bmatrix} 0 \\ H \end{bmatrix}, \Theta_0) = \begin{bmatrix} 0 \\ H \end{bmatrix} \\
+    L_1 &= C_1 - Rot(\begin{bmatrix} W \\ 0 \end{bmatrix}, \Theta) = \begin{bmatrix} -W\cdot cos\Theta \\ H - W\cdot sin\Theta \end{bmatrix} \\
+    R_1 &= C_1 + Rot(\begin{bmatrix} W \\ 0 \end{bmatrix}, \Theta) = \begin{bmatrix} W\cdot cos\Theta \\ H + W\cdot sin\Theta \end{bmatrix}
+\end{align}
+
+\section{Inverse solution}
+
+Let $\Theta = \Theta_1$ for readability, then
+
+\begin{align}
+    \left\Vert L_1 - L_0 \right\Vert_2 &= H - X \\
+    \left\Vert R_1 - R_0 \right\Vert_2 &= H + X \\
+    \left\Vert R_1 - R_0 \right\Vert_2 &= \left\Vert L_1 - L_0 \right\Vert + 2X \\
+    \left\Vert \begin{bmatrix} W\cdot cos\Theta - W \\ H + W\cdot sin\Theta \end{bmatrix} \right\Vert_2 &= \left\Vert \begin{bmatrix} W - W\cdot cos\Theta \\ H - W\cdot sin\Theta \end{bmatrix} \right\Vert_2 + 2X \nonumber
+\end{align}
+
+\begin{align}
+    \sqrt{(W\cdot cos\Theta - W)^2 + (H + W\cdot sin\Theta)^2} &= \\ 
+    \sqrt{(W - W\cdot cos\Theta)^2 + (H - W\cdot sin\Theta)^2} &+ 2X
+\end{align}
+
+Apply two approximations for small angles:
+
+\begin{align}
+    cos(\theta) &= 1 - \frac{\theta^2}{2} \\
+    sin(\theta) &= \theta
+\end{align}
+
+\begin{align}
+    \sqrt{W^2\frac{\Theta^4}{4} + H^2 + W^2\Theta^2 + 2HW\Theta} &= \\
+    \sqrt{W^2\frac{\Theta^4}{4} + H^2 + W^2\Theta^2 - 2HW\Theta} &+ 2X \nonumber
+\end{align}
+
+Simplify further and remove terms that are negligible at small angles:
+
+\begin{align}
+    \sqrt{H^2 + 2HW\Theta} &= \sqrt{H^2 - 2HW\Theta} + 2X \\
+    H^2 + 2HW\Theta &= H^2 - 2HW\Theta  + 4X(X + \sqrt{H^2 - 2HW\Theta}) \\
+    4HW\Theta &= 4X(X + \sqrt{H^2 - 2HW\Theta}) \\
+    HW\Theta &\approx X(X + H) \\
+    \Theta &\approx \frac{X(X+H)}{WH}
+\end{align}
+
+\end{document}
