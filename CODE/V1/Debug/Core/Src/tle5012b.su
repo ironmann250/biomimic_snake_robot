@@ -1,0 +1,9 @@
+../Core/Src/tle5012b.c:11:6:tle5012_Init	4	static
+../Core/Src/tle5012b.c:23:7:tle5012_ReadAngle	24	static
+../Core/Src/tle5012b.c:48:6:tle5012_ReadAngle2	24	static
+../Core/Src/tle5012b.c:74:7:tle5012_ReadSpeed	16	static
+../Core/Src/tle5012b.c:105:7:tle5012_ReadSpeed2	16	static
+../Core/Src/tle5012b.c:141:9:tle5012_ReadRevol	24	static
+../Core/Src/tle5012b.c:169:9:tle5012_ReadRevol2	24	static
+../Core/Src/tle5012b.c:203:6:tle5012_Rset	16	static
+../Core/Src/tle5012b.c:226:6:tle5012_Calibrate0	24	static
