@@ -6,4 +6,4 @@ CAD, PCB and Code files for an under actuated snake robot made to mimic snakes.
 - Solidworks v2022
 - python v3.8+ (anaconda packages)
 - arduino (esp32 arduino api v3+) 
-- EasyEDA (PCB design)
+- EasyEDA PRO (PCB design)
