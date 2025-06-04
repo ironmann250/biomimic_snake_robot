@@ -14,7 +14,7 @@ from datetime import datetime
 
 # Configuration
 DEFAULT_PORT = 'COM6'
-BUFFER_SIZE = 500
+BUFFER_SIZE = 50
 SEND_DELAY_MS = 500
 SETTLING_THRESHOLD = 6
 DEBUG = False
