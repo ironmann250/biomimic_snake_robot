@@ -85,6 +85,7 @@ void setup() {
     printEncoder();
 
     // Initialize BLE
+    
     initBLE("azerty");
     // zero out encoders
     //motor1.startSinusoidalOscillation(0.15f, 180.0f);
