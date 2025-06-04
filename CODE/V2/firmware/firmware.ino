@@ -43,16 +43,16 @@ void setup() {
     motorInit(
         ENCODER1_PIN_A, ENCODER1_PIN_B,
         ENCODER2_PIN_A, ENCODER2_PIN_B,
-        AIN_2, AIN_1,  // Motor 1 pins (AIN_2 = 37, AIN_1 = 38)
         BIN_2, BIN_1,  // Motor 2 pins (BIN_2 = 35, BIN_1 = 36)
+        AIN_2, AIN_1,  // Motor 1 pins (AIN_2 = 37, AIN_1 = 38)
         SLEEP_PIN,
         RESET_COUNT_ON_BOOT,
-        8344 //revs per cycle
+        3576 //revs per cycle
     );
     Serial.println("starting");
     // Initialize motor controllers with explicit configurations
-    motor1.init({0, AIN_2, AIN_1, 8344}); // Motor 1 (num 0) uses AIN_2 & AIN_1
-    motor2.init({1, BIN_2, BIN_1, 8344}); // Motor 2 (num 1) uses BIN_2 & BIN_1
+    motor1.init({0, AIN_2, AIN_1, 3576}); // Motor 1 (num 0) uses AIN_2 & AIN_1
+    motor2.init({1, BIN_2, BIN_1, 3576}); // Motor 2 (num 1) uses BIN_2 & BIN_1
     Serial.println("starting");
     // Tuning setup
     tuning.add("tar1", motor1.Setpoint);
@@ -85,7 +85,8 @@ void setup() {
     printEncoder();
 
     // Initialize BLE
-    initBLE("SnakeRobot new");
+    
+    initBLE("azerty");
     // zero out encoders
     //motor1.startSinusoidalOscillation(0.15f, 180.0f);
     //motor2.startSinusoidalOscillation(0.15f, 180.0f);
