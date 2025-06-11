@@ -1,0 +1,16 @@
+[StartTime]
+steel sheet-Buckling 1.MFC=
+[SolverState]
+steel sheet-Buckling 1.MFC=2
+[MainFrame]
+steel sheet-Buckling 1.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMECAAAAAHEBAAAAAELDAAAAAKBCAAAAA
+[ShowMin]
+steel sheet-Buckling 1.MFC=yes
+[SolverType]
+steel sheet-Buckling 1.MFC=Linear Analysis
+[StudyType]
+steel sheet-Buckling 1.MFC=-1
+[StudyName]
+[Solver]
+steel sheet-Buckling 1.MFC=Sparse
+[StudyName1]
